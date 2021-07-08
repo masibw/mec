@@ -1,7 +1,11 @@
 package main
 
-import "fmt"
+import (
+	"os"
+
+	"github.com/masibw/mec/cmd"
+)
 
 func main() {
-	fmt.Println("Hello World!")
+	cmd.Run(os.Args)
 }
