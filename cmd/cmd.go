@@ -6,8 +6,9 @@ import (
 )
 
 const (
-	appName  = "mec"
-	appUsage = "Self made container runtime by masibw"
+	appName    = "mec"
+	specConfig = "config.json"
+	appUsage   = "Self made container runtime by masibw"
 )
 
 func Run(args []string) {
@@ -23,6 +24,7 @@ func Run(args []string) {
 
 	app.Commands = []*cli.Command{
 		CreateCommand(),
+		InitCommand(),
 	}
 
 	if err := app.Run(os.Args); err != nil {
