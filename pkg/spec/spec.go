@@ -3,12 +3,27 @@ package spec
 import (
 	"encoding/json"
 	"github.com/opencontainers/runtime-spec/specs-go"
+	"github.com/urfave/cli/v2"
 	"golang.org/x/xerrors"
 	"os"
 	"path/filepath"
 )
 
-func LoadSpec(path string) (spec *specs.Spec, err error){
+func SetupSpec(context *cli.Context, configPath string) (spec *specs.Spec,err error){
+	bundle := context.String("bundle")
+	if bundle != "" {
+		if err := os.Chdir(bundle); err != nil {
+			return
+		}
+	}
+	spec, err = loadSpec(configPath)
+	if err != nil {
+		return
+	}
+	return
+}
+
+func loadSpec(path string) (spec *specs.Spec, err error){
 	var file *os.File
 	file, err = os.Open(path)
 	if err != nil {

@@ -7,7 +7,7 @@ import (
 
 const (
 	appName    = "mec"
-	specConfig = "config.json"
+	specConfig = "configs.json"
 	appUsage   = "Self made container runtime by masibw"
 )
 
@@ -26,7 +26,6 @@ func Run(args []string) {
 		CreateCommand(),
 		InitCommand(),
 	}
-
 	if err := app.Run(os.Args); err != nil {
 		panic(err)
 	}
