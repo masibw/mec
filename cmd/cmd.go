@@ -1,8 +1,9 @@
 package cmd
 
 import (
-	"github.com/urfave/cli/v2"
 	"os"
+
+	"github.com/urfave/cli/v2"
 )
 
 const (
@@ -23,6 +24,7 @@ func Run(args []string) {
 
 	app.Commands = []*cli.Command{
 		CreateCommand(),
+		InitCommand(),
 	}
 
 	if err := app.Run(os.Args); err != nil {
